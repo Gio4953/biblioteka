@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book List</title>
+</head>
+<body>
+    <h1>Book List</h1>
+    {% for book in books %}
+        <h3>{{ book.title }}</h3>
+        <p>Author: {{ book.author }}</p>
+        <p>Publication Date: {{ book.publication_date }}</p>
+        {% for reader in book.readers.all %}
+            <p>Reader: {{ reader.name }} {{ reader.surname }}</p>
+            <p>Email: {{ reader.email }}</p>
+        {% empty %}
+            <p>No readers for this book.</p>
+        {% endfor %}
+    {% empty %}
+        <p>No books available.</p>
+    {% endfor %}
+</body>
+</html>
